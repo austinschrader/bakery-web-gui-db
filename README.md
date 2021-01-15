@@ -1,4 +1,4 @@
-# Dr. Sillystringz's Factory Database & Web GUI
+# Pierre's Database & Web GUI
 
 ## Description
 
