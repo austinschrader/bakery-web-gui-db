@@ -6,10 +6,10 @@ namespace Shop.Models
 {
   public class ShopContext : IdentityDbContext<ApplicationUser>
   {
-    public DbSet<Engineer> Engineers { get; set; }
-    public virtual DbSet<Machine> Machines { get; set; }
+    public DbSet<Flavor> Flavors { get; set; }
+    public virtual DbSet<Treat> Treats { get; set; }
 
-    public DbSet<MachineEngineer> MachineEngineer { get; set; }
+    public DbSet<TreatFlavor> TreatFlavor { get; set; }
 
     public ShopContext(DbContextOptions options) : base(options) { }
   }

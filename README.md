@@ -2,7 +2,7 @@
 
 ## Description
 
-The project allows Dr SillyStringz to manage his factory. His factory has both machines and engineers assigned to work on them. This web application allows him to manage those relationships, as well as store their data in MySQL.
+The project allows Dr SillyStringz to manage his factory. His factory has both treats and flavors assigned to work on them. This web application allows him to manage those relationships, as well as store their data in MySQL.
 
 By Austin Schrader, 1/8/2020
 

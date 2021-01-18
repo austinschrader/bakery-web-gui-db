@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Shop.Migrations
 {
-    public partial class Shop : Migration
+    public partial class ShopTreat : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,29 +48,29 @@ namespace Shop.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Engineers",
+                name: "Flavors",
                 columns: table => new
                 {
-                    EngineerId = table.Column<int>(nullable: false)
+                    FlavorId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Engineers", x => x.EngineerId);
+                    table.PrimaryKey("PK_Flavors", x => x.FlavorId);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Machines",
+                name: "Treats",
                 columns: table => new
                 {
-                    MachineId = table.Column<int>(nullable: false)
+                    TreatId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Machines", x => x.MachineId);
+                    table.PrimaryKey("PK_Treats", x => x.TreatId);
                 });
 
             migrationBuilder.CreateTable(
@@ -180,28 +180,28 @@ namespace Shop.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MachineEngineer",
+                name: "TreatFlavor",
                 columns: table => new
                 {
-                    MachineEngineerId = table.Column<int>(nullable: false)
+                    TreatFlavorId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    EngineerId = table.Column<int>(nullable: false),
-                    MachineId = table.Column<int>(nullable: false)
+                    FlavorId = table.Column<int>(nullable: false),
+                    TreatId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MachineEngineer", x => x.MachineEngineerId);
+                    table.PrimaryKey("PK_TreatFlavor", x => x.TreatFlavorId);
                     table.ForeignKey(
-                        name: "FK_MachineEngineer_Engineers_EngineerId",
-                        column: x => x.EngineerId,
-                        principalTable: "Engineers",
-                        principalColumn: "EngineerId",
+                        name: "FK_TreatFlavor_Flavors_FlavorId",
+                        column: x => x.FlavorId,
+                        principalTable: "Flavors",
+                        principalColumn: "FlavorId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MachineEngineer_Machines_MachineId",
-                        column: x => x.MachineId,
-                        principalTable: "Machines",
-                        principalColumn: "MachineId",
+                        name: "FK_TreatFlavor_Treats_TreatId",
+                        column: x => x.TreatId,
+                        principalTable: "Treats",
+                        principalColumn: "TreatId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -243,14 +243,14 @@ namespace Shop.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_MachineEngineer_EngineerId",
-                table: "MachineEngineer",
-                column: "EngineerId");
+                name: "IX_TreatFlavor_FlavorId",
+                table: "TreatFlavor",
+                column: "FlavorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MachineEngineer_MachineId",
-                table: "MachineEngineer",
-                column: "MachineId");
+                name: "IX_TreatFlavor_TreatId",
+                table: "TreatFlavor",
+                column: "TreatId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -271,7 +271,7 @@ namespace Shop.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "MachineEngineer");
+                name: "TreatFlavor");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -280,10 +280,10 @@ namespace Shop.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Engineers");
+                name: "Flavors");
 
             migrationBuilder.DropTable(
-                name: "Machines");
+                name: "Treats");
         }
     }
 }

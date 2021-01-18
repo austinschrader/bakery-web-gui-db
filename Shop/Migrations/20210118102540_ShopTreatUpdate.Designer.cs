@@ -9,8 +9,8 @@ using Shop.Models;
 namespace Shop.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20210118101017_Shop")]
-    partial class Shop
+    [Migration("20210118102540_ShopTreatUpdate")]
+    partial class ShopTreatUpdate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -176,46 +176,46 @@ namespace Shop.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Shop.Models.Engineer", b =>
+            modelBuilder.Entity("Shop.Models.Flavor", b =>
                 {
-                    b.Property<int>("EngineerId")
+                    b.Property<int>("FlavorId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
 
-                    b.HasKey("EngineerId");
+                    b.HasKey("FlavorId");
 
-                    b.ToTable("Engineers");
+                    b.ToTable("Flavors");
                 });
 
-            modelBuilder.Entity("Shop.Models.Machine", b =>
+            modelBuilder.Entity("Shop.Models.Treat", b =>
                 {
-                    b.Property<int>("MachineId")
+                    b.Property<int>("TreatId")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
 
-                    b.HasKey("MachineId");
+                    b.HasKey("TreatId");
 
-                    b.ToTable("Machines");
+                    b.ToTable("Treats");
                 });
 
-            modelBuilder.Entity("Shop.Models.MachineEngineer", b =>
+            modelBuilder.Entity("Shop.Models.TreatFlavor", b =>
                 {
-                    b.Property<int>("MachineEngineerId")
+                    b.Property<int>("TreatFlavorId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("EngineerId");
+                    b.Property<int>("FlavorId");
 
-                    b.Property<int>("MachineId");
+                    b.Property<int>("TreatId");
 
-                    b.HasKey("MachineEngineerId");
+                    b.HasKey("TreatFlavorId");
 
-                    b.HasIndex("EngineerId");
+                    b.HasIndex("FlavorId");
 
-                    b.HasIndex("MachineId");
+                    b.HasIndex("TreatId");
 
-                    b.ToTable("MachineEngineer");
+                    b.ToTable("TreatFlavor");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -263,16 +263,16 @@ namespace Shop.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Shop.Models.MachineEngineer", b =>
+            modelBuilder.Entity("Shop.Models.TreatFlavor", b =>
                 {
-                    b.HasOne("Shop.Models.Engineer", "Engineer")
-                        .WithMany("Machines")
-                        .HasForeignKey("EngineerId")
+                    b.HasOne("Shop.Models.Flavor", "Flavor")
+                        .WithMany("Treats")
+                        .HasForeignKey("FlavorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Shop.Models.Machine", "Machine")
-                        .WithMany("Engineers")
-                        .HasForeignKey("MachineId")
+                    b.HasOne("Shop.Models.Treat", "Treat")
+                        .WithMany("Flavors")
+                        .HasForeignKey("TreatId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
