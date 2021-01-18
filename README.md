@@ -2,7 +2,7 @@
 
 ## Description
 
-The project allows Dr SillyStringz to manage his factory. His factory has both treats and flavors assigned to work on them. This web application allows him to manage those relationships, as well as store their data in MySQL.
+The project allows Pierre to manage his shop. His shop has both treats and flavors assigned to categorize them. This web application allows him to manage those relationships, as well as store their data in MySQL.
 
 By Austin Schrader, 1/8/2020
 
@@ -20,7 +20,7 @@ By Austin Schrader, 1/8/2020
 
 1. Clone or Download this repository
 2. Navigate to the folder where you downloaded or cloned this repository
-3. Now open your terminal and navigate to Factory.Solution > Factory
+3. Now open your terminal and navigate to Shop.Solution > Shop
 4. Type in `dotnet restore` to download necessary packages
 5. Modify the file titled appsettings.json and input your MySQL password as the value for "pwd"
 6. Import the MySQL database
@@ -39,7 +39,7 @@ By Austin Schrader, 1/8/2020
 
 ## How to Setup MySQL Database Using Entity Framework
 
-1. Navigate to the project directory, in this case Factory.Solution > Factory
+1. Navigate to the project directory, in this case Shop.Solution > Shop
 2. Run `dotnet ef database update` to generate the MySQL Database using the migration
 3. If you want to update the structure of the DB, first modify the models, then run: `dotnet ef migrations add {MIGRATIONNAMEHERE}`
 4. Finally, run the `dotnet ef database update` to apply the migration to your MySQL database

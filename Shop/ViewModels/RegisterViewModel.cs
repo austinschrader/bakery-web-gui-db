@@ -14,6 +14,11 @@ namespace Shop.ViewModels
     [Display(Name = "Password")]
     public string Password { get; set; }
 
+    [DataType(DataType.Password)]
+    [Display(Name = "Confirm Password")]
+    [Compare("Password", ErrorMessage = "The two passwords do not match.")]
+    public string ConfirmPassword { get; set; }
+
 
   }
 }
