@@ -9,8 +9,8 @@ using Shop.Models;
 namespace Shop.Migrations
 {
     [DbContext(typeof(ShopContext))]
-    [Migration("20210118102540_ShopTreatUpdate")]
-    partial class ShopTreatUpdate
+    [Migration("20210118123012_AuthLogin")]
+    partial class AuthLogin
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -183,7 +183,11 @@ namespace Shop.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("FlavorId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Flavors");
                 });
@@ -195,7 +199,11 @@ namespace Shop.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("TreatId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Treats");
                 });
@@ -261,6 +269,20 @@ namespace Shop.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Shop.Models.Flavor", b =>
+                {
+                    b.HasOne("Shop.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("Shop.Models.Treat", b =>
+                {
+                    b.HasOne("Shop.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Shop.Models.TreatFlavor", b =>

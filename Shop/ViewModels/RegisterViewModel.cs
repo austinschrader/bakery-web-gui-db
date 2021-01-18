@@ -19,6 +19,5 @@ namespace Shop.ViewModels
     [Compare("Password", ErrorMessage = "The two passwords do not match.")]
     public string ConfirmPassword { get; set; }
 
-
   }
 }
